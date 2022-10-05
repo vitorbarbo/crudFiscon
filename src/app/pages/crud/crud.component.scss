@@ -1,0 +1,41 @@
+.container {
+  margin-top: 5em;
+  h1 {
+    text-align: center;
+  }
+  form {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    gap: 1em;
+    margin: 2em auto;
+  }
+  .wrapper {
+    height: 40vh;
+    overflow-y: auto;
+  }
+  table {
+    width: 80%;
+    margin-top: 5em;
+    margin: 1em auto;
+  }
+  button {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 768px) {
+  form {
+    flex-direction: column;
+  }
+  mat-header-cell,
+  mat-cell {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+  button {
+    width: 75%;
+    height: 50px;
+    margin: auto;
+  }
+}

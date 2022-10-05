@@ -1,0 +1,78 @@
+<div class="container">
+  <h1>EXEMPLO CRUD</h1>
+
+  <form [formGroup]="newUser">
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input
+        matInput
+        formControlName="userName"
+        type="text"
+        name="newuserName"
+        id="newuserName"
+        required
+      /> </mat-form-field
+    ><br />
+
+    <mat-form-field appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <input
+        matInput
+        formControlName="phone"
+        type="phone"
+        name="phone"
+        id="phone"
+        mask="mask"
+        required
+      /> </mat-form-field
+    ><br />
+    <button mat-raised-button color="primary" type="reset">Limpar</button>
+    <button mat-raised-button color="primary" type="submit" (click)="addUser()">
+      Salvar
+    </button>
+  </form>
+
+  <form [formGroup]="filters">
+    <mat-form-field appearance="outline">
+      <mat-label>Filtro</mat-label>
+      <input
+        matInput
+        placeholder="Nome / Telefone"
+        formControlName="filter"
+        (keyup)="filterUser($event)"
+      />
+    </mat-form-field>
+  </form>
+
+  <div class="wrapper">
+    <table mat-table #table [dataSource]="myDataArray" class="mat-elevation-z8">
+      <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+        <mat-cell *matCellDef="let user"
+          ><div>{{ user.userName }}</div></mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+        <mat-cell *matCellDef="let user"
+          ><div>{{ user.phone }}</div></mat-cell
+        >
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef>Ações</mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <div>
+            <button mat-button color="warn" (click)="removeUser(user)">
+              Deletar
+            </button>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row *matRowDef="let dataSource; columns: columnsToDisplay"></mat-row>
+    </table>
+  </div>
+</div>
