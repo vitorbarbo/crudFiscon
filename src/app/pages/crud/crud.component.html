@@ -22,7 +22,7 @@
         type="phone"
         name="phone"
         id="phone"
-        mask="mask"
+        mask="(00) 00000 - 0000"
         required
       /> </mat-form-field
     ><br />
@@ -56,7 +56,7 @@
       <ng-container matColumnDef="phone">
         <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
         <mat-cell *matCellDef="let user"
-          ><div>{{ user.phone }}</div></mat-cell
+          ><div>{{ user.phone | mask: "(00) 00000 - 0000" }}</div></mat-cell
         >
       </ng-container>
 
