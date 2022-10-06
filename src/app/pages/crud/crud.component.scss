@@ -27,6 +27,9 @@
   form {
     flex-direction: column;
   }
+  table {
+    width: 100% !important;
+  }
   mat-header-cell,
   mat-cell {
     display: flex;
