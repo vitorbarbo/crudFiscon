@@ -45,9 +45,17 @@
   </form>
 
   <div class="wrapper">
-    <table mat-table #table [dataSource]="myDataArray" class="mat-elevation-z8">
+    <table
+      mat-table
+      #table
+      [dataSource]="myDataArray"
+      class="mat-elevation-z8"
+      matSort
+    >
       <ng-container matColumnDef="userName">
-        <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+        <mat-header-cell *matHeaderCellDef mat-sort-header
+          >Nome</mat-header-cell
+        >
         <mat-cell *matCellDef="let user"
           ><div>{{ user.userName }}</div></mat-cell
         >

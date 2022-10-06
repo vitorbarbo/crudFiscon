@@ -1,5 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSort } from '@angular/material/sort';
 
 export interface user {
   userName: string;
@@ -11,7 +18,7 @@ export interface user {
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.scss'],
 })
-export class CrudComponent implements OnInit {
+export class CrudComponent implements OnInit, OnChanges {
   columnsToDisplay = ['userName', 'phone', 'actions'];
   newUser: FormGroup;
   filters: FormGroup;
@@ -20,6 +27,8 @@ export class CrudComponent implements OnInit {
 
   myDataArray: any; // dataSource
   name: string;
+
+  @ViewChild(MatSort) sort: MatSort;
 
   constructor(private fb: FormBuilder) {}
 
@@ -31,6 +40,10 @@ export class CrudComponent implements OnInit {
     this.filters = this.fb.group({
       filter: [''],
     });
+  }
+
+  ngOnChanges(): void {
+    this.myDataArray.sort = this.sort;
   }
 
   // adiciona um usuário

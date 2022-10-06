@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
+import { MatSortModule } from '@angular/material/sort';
 
 registerLocaleData(localePt, 'pt');
 
@@ -27,6 +28,7 @@ const maskConfig: Partial<IConfig> = {
     ReactiveFormsModule,
     FormsModule,
     NgxMaskModule.forRoot(maskConfig),
+    MatSortModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'pt' },
